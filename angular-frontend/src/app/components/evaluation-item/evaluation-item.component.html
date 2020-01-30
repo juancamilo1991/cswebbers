@@ -1,0 +1,16 @@
+    <div class="qandas">
+        <div class="header">
+         <div [ngSwitch]="evaluation.description">
+          
+         <mat-card-title *ngSwitchCase="'Question'"> <mat-icon class="icon">whatshot</mat-icon> {{ evaluation.body }} <mat-icon class="icon">whatshot</mat-icon></mat-card-title>
+         
+    </div>
+</div>
+            <div class="answers">
+             <mat-radio-group name="allow" [ngSwitch]="evaluation.description">
+                 <mat-radio-button value="" *ngSwitchCase="'Answer'">
+                   {{ evaluation.body }}
+                 </mat-radio-button>
+             </mat-radio-group>
+            </div>
+        </div>

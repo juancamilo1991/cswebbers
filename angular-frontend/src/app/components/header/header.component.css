@@ -1,0 +1,38 @@
+.side-menu {
+    flex: 1 1 auto;
+}
+
+div {
+    font-size: 80%;
+}
+
+div:not(.menus) {
+    margin: 35px;
+}
+
+div:nth-of-type(4){
+    margin-right: 60px;
+}
+
+.dropmenu {
+    position: relative;
+}
+
+.menus {
+    position: absolute;
+    display: none;
+    font-size: 70%;
+}
+
+.dropmenu:hover .menus{
+    display: block;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.menus li {
+    list-style: none;
+    font-size: 120%;
+    position: relative;
+    top: 10px;
+}

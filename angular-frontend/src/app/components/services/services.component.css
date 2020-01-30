@@ -1,0 +1,23 @@
+.service-description {
+    max-width: 400px;
+    margin: 50px;
+    border-radius: 5%;
+    border-style: double;
+    border-width: 2px;
+    padding: 10px;
+}
+
+.sub-header {
+    height: 60px;
+    flex: auto;
+    background-color: lavender;
+}
+
+.leftaligned{
+    float: left;
+}
+
+.leftaligned:not(.service-description){
+    margin-top: 70px;
+    margin-left: 190px;
+}
