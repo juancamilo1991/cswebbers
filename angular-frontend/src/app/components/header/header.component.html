@@ -1,13 +1,15 @@
-<mat-toolbar>
+<mat-toolbar class="header">
     <span>cswebbers</span>
-    <span class="side-menu"></span>
-    <div class="dropmenu">what we do
+    <div class="navigations">
+    <div class="dropmenu">
+        <p class="dropbtn">What we do</p>
         <div class="menus">
             <li (click)="goToServices()">Services</li>
             <li>Technologies</li>
          </div>
     </div>
-    <div>who we are</div>
-    <div>Blog</div>
-    <div>Contact us</div>
+    <div class="inline">who we are</div>
+    <div class="inline">Blog</div>
+    <div class="inline">Contact us</div>
+</div>
 </mat-toolbar>

@@ -1,26 +1,5 @@
-.qandas {
-    background-color: lavender;
-    height: 100px;
-    position: relative;
-}
 
 
-.header {
-    text-align: center;
-    padding: 20px;
-}
-
-
-.answers {  
-    position: absolute;
-    left: 580px;
-    text-align: center;
-    padding-bottom: 30px;
-}
-
-.icon {
-    size: 500%;
-}
 
 
   

@@ -19,6 +19,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { EvaluationItemComponent } from './components/evaluation-item/evaluation-item.component';
 import { FrontComponent } from './components/front/front.component';
+import { MainEvaluationComponent } from './components/main-evaluation/main-evaluation.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FrontComponent } from './components/front/front.component';
     EvaluationComponent,
     EvaluationItemComponent,
     FrontComponent,
+    MainEvaluationComponent,
   ],
   imports: [
     BrowserModule,
