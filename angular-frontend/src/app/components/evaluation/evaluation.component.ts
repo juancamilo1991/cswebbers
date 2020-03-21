@@ -13,8 +13,8 @@ export class EvaluationComponent implements OnInit {
 
 
   evaluations: Evaluation[];
-
-
+  radioValues:string = "";
+  radioAnswerHoldingArray:string[] = [];
 
   constructor(private simpleService: SimpleEvalService) { }
 
@@ -30,4 +30,13 @@ export class EvaluationComponent implements OnInit {
                  console.log(this.evaluations);
              })
           }
+
+    onRadioValue(event){
+     this.radioValues = event;
+    }
+
+    saveAnswerToArray(){
+      this.radioAnswerHoldingArray.push(this.radioValues);
+      console.log(this.radioAnswerHoldingArray);
+    }
       }

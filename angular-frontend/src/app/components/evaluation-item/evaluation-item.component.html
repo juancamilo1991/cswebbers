@@ -1,17 +1,13 @@
-    <div class="qandas">
-        <div class="header">
+    <div class="header">
          <div [ngSwitch]="evaluation.description">
-          
-         <div *ngSwitchCase="'Question'"> <mat-icon class="icon">whatshot</mat-icon> {{ evaluation.body }} <mat-icon class="icon">whatshot</mat-icon></div>
+         <div *ngSwitchCase="'Question'"><mat-icon class="icon">whatshot</mat-icon> {{ evaluation.body }} <mat-icon class="icon">whatshot</mat-icon></div>
          
-         </div>
-        </div>
-
      <div class="answers">
-         <mat-radio-group name="allow" [ngSwitch]="evaluation.description">
-            <mat-radio-button value="" *ngSwitchCase="'Answer'">
+         <mat-radio-group name="radioValue" *ngSwitchCase="'Answer'">
+            <mat-radio-button value="{{evaluation.body}}" (input)="saveButtonValue($event)" ngDefaultControl>
              {{ evaluation.body }}
-         </mat-radio-button>
-         </mat-radio-group>
+            </mat-radio-button>
+        </mat-radio-group>
+        </div>
      </div>
     </div>

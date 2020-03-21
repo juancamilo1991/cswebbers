@@ -1,4 +1,11 @@
-<app-evaluation-item *ngFor="let evaluation of evaluations" [evaluation]='evaluation'>
+<div>
+    <app-evaluation-item *ngFor="let evaluation of evaluations" [evaluation]='evaluation' (radioValue)="onRadioValue($event)">
 
-</app-evaluation-item>
+    </app-evaluation-item>
+    <div class="button-group">
+        <button mat-raised-button color="accent" routerLink="#">Next</button> |
+        <button mat-raised-button color="warn" routerLink="#">Back</button> |
+        <button type="submit" mat-raised-button color="primary" [disabled]="!radioValues" (click)="saveAnswerToArray()" routerLink="#">confirm</button>
+    </div>
+</div>
 

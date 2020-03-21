@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
@@ -20,6 +20,7 @@ import { EvaluationComponent } from './components/evaluation/evaluation.componen
 import { EvaluationItemComponent } from './components/evaluation-item/evaluation-item.component';
 import { FrontComponent } from './components/front/front.component';
 import { MainEvaluationComponent } from './components/main-evaluation/main-evaluation.component';
+import { EvaluationProcessComponent } from './components/evaluation-process/evaluation-process.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MainEvaluationComponent } from './components/main-evaluation/main-evalu
     EvaluationItemComponent,
     FrontComponent,
     MainEvaluationComponent,
+    EvaluationProcessComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { MainEvaluationComponent } from './components/main-evaluation/main-evalu
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
