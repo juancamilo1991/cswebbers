@@ -13,17 +13,17 @@ export class EvaluationItemComponent implements OnInit {
 
   
   @Input() evaluation: Evaluation;
-  @Output() radioValue = new EventEmitter<string>();
+  @Output() radioValue = new EventEmitter<Evaluation>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  saveButtonValue(event){
-      this.radioValue.emit(event.target.value);
+  saveButtonValue(evaluation){
+      this.radioValue.emit(evaluation);
       console.log("selected");
-      console.log(event.target.value);
+      console.log(evaluation);
     };
 
 

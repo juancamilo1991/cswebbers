@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { StickyDirection } from '@angular/cdk/table';
+
+import { Evaluation } from '../evaluation.model';
+import { Observable } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +20,20 @@ export class SimpleEvalService {
 
   constructor(private http: HttpClient) { }
 
-  getFirstQ(){
-    return this.http.get(`${this.uri}/firstq`);
+  getFirstQuestion(){
+    return this.http.get(`${this.uri}/firstquestion`);
   }
    
-  getSecondQ(){
-    return this.http.get(`${this.uri}/secondq`);
+  getSecondQuestion(){
+    return this.http.get(`${this.uri}/secondquestion`);
   }
 
-  getThirdQ(){
-    return this.http.get(`${this.uri}/thirdq`);
+  getThirdQuestion(){
+    return this.http.get(`${this.uri}/thirdquestion`);
+  }
+
+  getResult(evaluation:Evaluation[]):Observable<any>{
+    return this.http.post(`${this.uri}/result`, evaluation, httpOptions);
   }
 
 }

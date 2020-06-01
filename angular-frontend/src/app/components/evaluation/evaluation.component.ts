@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SimpleEvalService } from '../../services/simple-eval.service';
 import {MatListModule} from '@angular/material/list';
+import {MatSnackBar} from '@angular/material';
+import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 import { Evaluation } from '../../evaluation.model';
+import { async } from '@angular/core/testing';
+import { error } from 'util';
 
 @Component({
   selector: 'app-evaluation',
@@ -13,30 +18,133 @@ export class EvaluationComponent implements OnInit {
 
 
   evaluations: Evaluation[];
-  radioValues:string = "";
-  radioAnswerHoldingArray:string[] = [];
+  finalAnswers: Evaluation[];
+  radioValues:Evaluation;
+  radioAnswerHoldingArray:Evaluation[] = [];
+  fetchNextQuestionWorked:boolean = true;
+  data:Number;
 
-  constructor(private simpleService: SimpleEvalService) { }
+  constructor(private simpleService: SimpleEvalService, public snackBar: MatSnackBar, private router: Router,
+    private dataService: DataService) { }
 
   ngOnInit() {
-    this.fetchfirstQ();
+    this.fetchNextQuestion();
   }
 
-    fetchfirstQ(){
-      this.simpleService.getFirstQ()
-             .subscribe((data: Evaluation[]) => {
-                 this.evaluations = data;
-                 console.log('data requested...');
-                 console.log(this.evaluations);
-             })
-          }
+    fetchNextQuestion(){
+      if(!this.radioAnswerHoldingArray.length){
+       var question = this.simpleService.getFirstQuestion();
+      }
+      else if(this.radioAnswerHoldingArray.length === 1){
+        var question = this.simpleService.getSecondQuestion();
+      }
+      else if(this.radioAnswerHoldingArray.length === 2){
+        var question = this.simpleService.getThirdQuestion();
+      }
+      else if(this.radioAnswerHoldingArray.length === 3 && this.answersAreUnique()){
+        ///check if all elements in array are different.
+        //if yes then send answers to server.  if not, then take survey again.
+        this.fetchNextQuestionWorked = false;
+        this.disableConfirmButton();
+        console.log('very well!'); return
+      }
+        else {
+          this.errorMessageSnackBar();
+          return;
+        }
+          question.subscribe((data:Evaluation[]) => {
+            this.evaluations = data;
+            console.log('data requested...');
+            console.log(this.evaluations);
+            this.disableConfirmButton();
 
-    onRadioValue(event){
-     this.radioValues = event;
+          }, (error) => {
+            this.fetchNextQuestionWorked = false;
+            this.handleErrorAcordingly();
+          })
+      }
+
+      answersAreUnique(){
+      let aliasArray = this.radioAnswerHoldingArray;
+
+      this.radioAnswerHoldingArray.forEach((element) => {
+        let amountOfMatches = 0;
+
+        aliasArray.every((aliasElement) => {
+          if(element === aliasElement){
+            amountOfMatches++;
+          }
+          if(amountOfMatches > 1){
+            console.error('nope!');
+            return false;
+          }
+        });
+      });
+      return true;
     }
+
+   async handleErrorAcordingly(){
+       await this.disableConfirmButton();
+       this.errorMessageSnackBar();
+    }
+
+     disableConfirmButton = async () => {
+       this.radioValues = null;
+    }
+
+     sendAnswersToServer(){
+      this.router.navigate(['/spinner']);
+      this.simpleService.getResult(this.radioAnswerHoldingArray).subscribe(data => 
+        this.dataService.changeResult(data))
+    }
+
+    showSendButton(){
+      //make sendbtn appear
+      let classes = {
+        'make-button-appear': this.radioAnswerHoldingArray.length === 3 && this.answersAreUnique()
+      }
+      return classes;
+    }  
+
+    setDisabledButtonColorClass(){
+      let classes = {
+        disable: !this.radioValues,
+        savebtn: this.radioValues
+      }
+      return classes;
+    }
+
+    onRadioValue(evaluation){
+      (!this.fetchNextQuestionWorked) ? this.disableConfirmButton() : this.radioValues = evaluation;
+    }
+
+    errorMessageSnackBar = () => {
+      if(!this.fetchNextQuestionWorked){
+        this.snackBar.open('Something went wrong', 'Please reload page', {
+          duration: 5000
+        });
+      }
+      else if(!this.answersAreUnique() || this.radioAnswerHoldingArray.length !== 3){
+        this.snackBar.open('Something went wrong', 'please take survey again.', {
+          duration: 5000
+        })
+      }
+      else {
+        this.snackBar.open('Failed to save Answer', 'Please try again', {
+          duration: 5000
+        });
+      }
+    
+  }
 
     saveAnswerToArray(){
-      this.radioAnswerHoldingArray.push(this.radioValues);
-      console.log(this.radioAnswerHoldingArray);
+        try {
+         this.radioAnswerHoldingArray.push(this.radioValues);
+         console.log(this.radioAnswerHoldingArray);
+         this.fetchNextQuestion();
+        }
+        catch {
+          this.errorMessageSnackBar();
+       }
     }
-      }
+  }

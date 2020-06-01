@@ -11,6 +11,7 @@ export class FrontComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
-
+ 
 }

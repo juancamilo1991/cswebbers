@@ -1,0 +1,73 @@
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+
+
+.submit-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+
+
+.savebtn, .nextbtn, .backbtn, .sendbtn {
+    font-size: large;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: var(--font-black);
+    border: none;
+    border-radius: 30px;
+}
+
+.savebtn, .nextbtn, .backbtn {
+    width: 350px;
+}
+
+.sendbtn {
+    width: 200px;
+    background-color: rgb(177, 27, 177);
+    visibility: hidden;
+}
+
+.make-button-appear {
+    visibility: visible;
+}
+
+.nextbtn, .backbtn {
+    background-color: var(--lightblue);
+}
+
+.savebtn {
+    background-color: var(--ok-green);
+}
+
+.savebtn:hover, .nextbtn:hover, .backbtn:hover, .sendbtn:hover {
+    cursor: pointer;
+}
+
+.sendbtn:hover {
+    color: var(--font-white);
+}
+
+.nextbtn:hover, .backbtn:hover {
+    background-color: rgb(41, 91, 156);
+    color: var(--font-white);
+}
+
+.disable {
+    font-size: large;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-basis: 350px;
+    color: var(--font-black);
+    background-color: var(--grey);
+    border: none;
+    border-radius: 30px;
+}

@@ -1,4 +1,4 @@
 .evaluation-container {
-    background-color: lavender;
-    height: 500px;
+    background-color: var(--background-white);
+    height: 800px;
 }

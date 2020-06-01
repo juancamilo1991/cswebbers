@@ -1,10 +1,10 @@
     <div class="header">
-         <div [ngSwitch]="evaluation.description">
-         <div *ngSwitchCase="'Question'"><mat-icon class="icon">whatshot</mat-icon> {{ evaluation.body }} <mat-icon class="icon">whatshot</mat-icon></div>
+         <div class="switches" [ngSwitch]="evaluation.description">
+         <div class="question-font" *ngSwitchCase="'Question'">{{ evaluation.body }}  <br><br><hr width="300px"></div>
          
      <div class="answers">
          <mat-radio-group name="radioValue" *ngSwitchCase="'Answer'">
-            <mat-radio-button value="{{evaluation.body}}" (input)="saveButtonValue($event)" ngDefaultControl>
+            <mat-radio-button class="radio" value="{{evaluation}}" (input)="saveButtonValue(evaluation)" ngDefaultControl>
              {{ evaluation.body }}
             </mat-radio-button>
         </mat-radio-group>

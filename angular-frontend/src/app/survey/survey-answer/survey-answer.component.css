@@ -1,0 +1,55 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 600px;
+}
+
+.wrapper-content {
+    display: flex;
+    align-items: flex-start;
+    width: 750px;
+    height: 300px;
+    flex-wrap: wrap;
+    margin: 0 5px;
+}
+
+.wrapper-content .main-content {
+    font-family: 'poppins';
+    font-size: 20px;
+    color: black;
+}
+
+.buttons {
+    margin: 5px 5px;
+}
+
+.buttons .button {
+    height: 40px;
+    width: 180px;
+    border: none;
+    border-radius: 50px;
+    background-color: #4169e1;
+    color: snow;
+}
+
+.buttons .button:hover {
+    cursor: pointer;
+    transition: all ease-out 0.3s;
+    background-color: rgb(44, 86, 214);
+}
+
+.growth-monochromatic {
+    background-image: url(../../../assets/img/undraw_investing.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 400px;
+    height: 400px;
+}
+
+a {
+    color: snow;
+}
+

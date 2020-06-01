@@ -1,0 +1,30 @@
+<div class="register-registration-container">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <i class="fas fa-user-circle fa-2x">Register</i>
+        <p>First Name</p> 
+        <label for="firstName"></label>
+        <input type="text" formControlName="firstName" id="firstName" required>
+        <div *ngIf="firstName.invalid && firstName.touched">
+            what the heck
+        </div>
+        <p>Last Name</p> 
+        <label for="lastName"></label>
+        <input type="text" formControlName="lastName" id="lastName" required>
+        <div *ngIf="lastName.invalid && lastName.touched">
+            water you doin
+        </div>
+        <p>Email</p> 
+        <label for="email"></label>
+        <input type="text" formControlName="email" id="lastName" required>
+        <div *ngIf="email.invalid && email.touched">
+            water you doin
+        </div>
+        <p>Password</p> 
+        <label for="password"></label>
+        <input type="password" formControlName="password" id="password" required>
+        <div *ngIf="password.invalid && password.touched">
+                what's wrong with you
+        </div>
+        <button type="submit" [disabled]="myForm.invalid"> Create Account </button>
+    </form>
+</div>

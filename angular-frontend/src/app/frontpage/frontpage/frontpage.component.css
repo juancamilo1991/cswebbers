@@ -1,0 +1,107 @@
+.flexbox-social-cards, .flexbox-event-cards, .flexbox-sample-cards {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.flexbox-event-cards {
+    background-color: #232323;
+    justify-content: center;
+    padding: 150px 0;
+}
+
+.flexbox-event-cards .event {
+    width: 520px;
+    height: 230px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    border: solid 3px white;
+    text-align: center;
+}
+
+.flexbox-event-cards .event > p {
+    margin-top: 100px
+}
+
+.flexbox-event-cards .event:hover {
+    transition: all 0.2s ease-out;
+    border: solid 5px white;
+    cursor: pointer;
+}
+
+.flexbox-event-cards .event > p {
+    font-size: 40px;
+}
+
+.flexbox-sample-cards {
+    background-color: whitesmoke;
+    padding: 0;
+}
+
+.flexbox-social-cards {
+    justify-content: center;
+    background-color: whitesmoke;
+    flex-wrap: wrap;
+}
+
+.contribution, .community, .patron {
+    width: 320px;
+    margin: 70px 0;
+}
+
+.contribution > p, .community > p, .patron > p {
+    font-size: 25px;
+    text-align: center;
+}
+
+p {
+    color: white;
+}
+
+.btn {
+    width: 120px;
+    height: 60px;
+    box-sizing: border-box;
+    border: solid 2px white;
+    text-align: center;
+    margin: auto auto 20px;
+}
+
+.btn-down {
+    margin-top: 55px;
+}
+
+.btn > p {
+    font-weight: bold;
+}
+
+.btn:hover {
+    transition: all 0.2s ease-out;
+    border: solid 5px white;
+    cursor: pointer;
+}
+
+.contribution, .community, .patron {
+    transition: all 0.2s ease-out;
+    position: relative;
+    top: 0;
+}
+
+.contribution:hover, .community:hover, .patron:hover {
+    top: -10px;
+    box-shadow: 0px 20px 50px -2px black;
+
+}
+
+.contribution {
+    background-color: #AD0707;
+}
+
+.community {
+    background-color: #E8333C;
+
+}
+
+.patron {
+    background-color: #EF412F;
+}

@@ -3,9 +3,13 @@
 
     </app-evaluation-item>
     <div class="button-group">
-        <button mat-raised-button color="accent" routerLink="#">Next</button> |
-        <button mat-raised-button color="warn" routerLink="#">Back</button> |
-        <button type="submit" mat-raised-button color="primary" [disabled]="!radioValues" (click)="saveAnswerToArray()" routerLink="#">confirm</button>
+        <button class="backbtn" routerLink="#">back</button> &nbsp;&nbsp;
+        <button class="nextbtn" routerLink="#">next</button> &nbsp;&nbsp;
+        <button class="savebtn disable" [ngClass]="setDisabledButtonColorClass()" type="submit" [disabled]="!radioValues" (click)="saveAnswerToArray()">save Answer</button><br><br>
+       
+    </div>
+    <div class="submit-group">
+        <button class="sendbtn" type="submit" [ngClass]="showSendButton()" (click)="sendAnswersToServer()">submit my Answers!</button>
     </div>
 </div>
 
