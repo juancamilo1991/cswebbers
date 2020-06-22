@@ -20,16 +20,12 @@ export class SimpleEvalService {
 
   constructor(private http: HttpClient) { }
 
-  getFirstQuestion(){
+  getFirstQuestion():Observable<any>{
     return this.http.get(`${this.uri}/firstquestion`);
   }
-   
-  getSecondQuestion(){
-    return this.http.get(`${this.uri}/secondquestion`);
-  }
 
-  getThirdQuestion(){
-    return this.http.get(`${this.uri}/thirdquestion`);
+  getNextQuestion(evaluation:Evaluation):Observable<any>{
+    return this.http.post(`${this.uri}/nextQuestion`, evaluation);
   }
 
   getResult(evaluation:Evaluation[]):Observable<any>{

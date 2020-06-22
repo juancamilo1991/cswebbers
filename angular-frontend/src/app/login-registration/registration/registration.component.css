@@ -6,42 +6,50 @@
     height: 600px;
 }
 
-.register-registration-container form {
-    width: 300px;
-    height: 450px;
-    margin-top: 60px;
-    border: solid 1px #232323;
-    border-radius: 10px;
+.register-registration-form form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    width: 300px;
+    height: 450px;
+    border: solid 1px #232323;
+    border-radius: 10px;
+    
 }
 
-.register-registration-container form #firstName, 
-.register-registration-container form #lastName,
-.register-registration-container form #email,
-.register-registration-container form #password
+.register-registration-form form #firstName, 
+.register-registration-form form #lastName,
+.register-registration-form form #email,
+.register-registration-form form #password
    {
     width: 250px;
     height: 25px;
     border: solid 1px white;
     border-radius: 2px;
-    margin: 10px 10px 30px 10px;
+    margin: auto 20px auto;
     box-shadow: 0 0 1px 1px #EF412F;
 }
 
-.fas, .fa-user-circle {
-    margin-bottom: 35px;
+.error-msg {
+    margin-left: 25px;
+    color: red;
+    font-size: small;
 }
 
-.register-registration-container form p {
-    margin: 0 auto 8px 25px;
+.title {
+    display: inline-block;
+    margin: 0 auto 5px 25px;
     line-height: 0;
+
+}
+
+.fas, .fa-user-circle {
+    text-align: center;
 }
 
 form button {
-    margin: 0 auto 8px 25px;
+    margin: 10px 10px 30px;
     width: 250px;
     height: 30px;
     background-color: tomato;

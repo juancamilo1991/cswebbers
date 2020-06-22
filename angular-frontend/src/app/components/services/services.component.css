@@ -1,23 +1,127 @@
-.service-description {
-    max-width: 400px;
-    margin: 50px;
-    border-radius: 5%;
-    border-style: double;
-    border-width: 2px;
-    padding: 10px;
+.service-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 700px;
 }
 
-.sub-header {
-    height: 60px;
-    flex: auto;
-    background-color: lavender;
+.service-title .title {
+    width: 600px;
+    font-size: 70px;
+    line-height: 1.2;
+    margin: 50px 20px 0;
+
 }
 
-.leftaligned{
-    float: left;
+.service-title .filler {
+    background-image: url(../../../assets/img/undraw_to_the_moon_v1mv.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 400px;
+    margin: 100px 20px 0;
 }
 
-.leftaligned:not(.service-description){
-    margin-top: 70px;
-    margin-left: 190px;
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 850px;
+    padding: 20px 0;
+    background-color: rgb(250, 249, 249);
 }
+
+.cards > div {
+    margin: 50px 20px;
+}
+
+.cards .card {
+    width: 170px;
+    min-height: 290px;
+    margin: 10px 10px;
+    padding: 20px;
+    border: 1px solid #cfcaca;
+}
+.cards .icon {
+    height: 100px;
+    margin-left: 70px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
+
+
+.cards .icon1 {
+    background-image: url(../../../assets/img/design1.png);
+}
+
+.cards .icon2 {
+    background-image: url(../../../assets/img/solutions.png);
+}
+
+.cards .icon3 {
+    background-image: url(../../../assets/img/rocket-ship.png);
+}
+
+.cards .card:hover {
+    background-color: var(--skyblue);
+    transition: all 0.2s ease-out;
+    border: 1px solid transparent;
+    color: white;
+}
+
+.survey-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 700px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../../../assets/img/arrow.jpg);
+}
+
+.survey-content .survey {
+    width: 600px;
+    margin: 100px 20px 20px;
+    font-size: 20px;
+}
+
+.survey-filler {
+    width: 500px;
+}
+
+.survey-content .survey > div {
+    font-size: 60px;
+    line-height: 1.2;
+}
+
+.change-font {
+    font-size: large;
+}
+
+h1 {
+    font-size: 50px;
+    line-height: 1.2;
+}
+
+.button {
+    height: 40px;
+    width: 180px;
+    border: none;
+    border-radius: 50px;
+    background-color: #4169e1;
+    color: snow;
+}
+
+.button:hover {
+    cursor: pointer;
+    transition: all ease-out 0.3s;
+    background-color: rgb(44, 86, 214);
+}
+

@@ -1,24 +1,29 @@
 <div class="login-registration-container">
-        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-            <i class="fas fa-user-circle fa-3x">Login</i>
-            <p>Username</p> 
-            <label for="userName"></label>
-            <input type="text" formControlName="userName" id="userName" required>
-            <div *ngIf="userName.invalid && userName.touched">
-                what the heck
-            </div>
-            <p>Email</p> 
+    <div class="login-registration-form">
+        <form [formGroup]="myForm" (ngSubmit)="onLoginSubmit()">
+            <div>
+            <i class="fas fa-user-circle fa-3x"></i>
+        </div>
+           <div>
+            <p class="title">Email</p> 
             <label for="email"></label>
             <input type="text" formControlName="email" id="email" required>
-            <div *ngIf="email.invalid && email.touched">
-                water you doin
+            <div class="error-msg" *ngIf="email.invalid && email.touched">
+                Please enter a valid email
             </div>
-            <p>Password</p> 
+       
+        </div>
+        <div>
+            <p class="title">Password</p> 
             <label for="password"></label>
-            <input type="text" formControlName="password" id="password" required>
-            <div *ngIf="password.invalid && password.touched">
-                    what's wrong with you
+            <input type="password" formControlName="password" id="password" required>
+            <div class="error-msg" *ngIf="password.invalid && password.touched">
+                Please enter a valid password
             </div>
+        </div>
+        <div>
             <button type="submit" [disabled]="myForm.invalid"> Login </button>
+        </div>
         </form>
+    </div>
 </div>

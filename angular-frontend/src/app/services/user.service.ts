@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,7 +18,15 @@ uri = 'http://localhost:4000/user';
   constructor(private http: HttpClient) { }
 
 submitForm(user):Observable<any>{
-  return this.http.post(`${this.uri}/register`, user, httpOptions);
+  return this.http.post(`${this.uri}/register`, user);
+}
+
+loginUser(loginUser):Observable<any>{
+  return this.http.post(`${this.uri}/login`, loginUser);
+}
+
+getIt():Observable<any>{
+  return this.http.get(`${this.uri}/hello`);
 }
 
 }

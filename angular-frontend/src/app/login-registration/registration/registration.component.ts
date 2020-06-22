@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   myForm: FormGroup;
 
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
@@ -51,9 +54,11 @@ get password(){
   return this.myForm.get('password');
 }
 
- onSubmit() {
-  this.userService.submitForm(this.myForm.value)
-    .subscribe(user => console.log(`our user is ${user}`),
-               error => console.log(`noooooooo`))
+onSubmit() {
+this.userService.submitForm(this.myForm.value)
+    .subscribe(user => this.router.navigate(['/login']),
+               
+               error => console.log(error));
   }
+
 }

@@ -23,6 +23,7 @@ export class EvaluationComponent implements OnInit {
   radioAnswerHoldingArray:Evaluation[] = [];
   fetchNextQuestionWorked:boolean = true;
   data:Number;
+  isLastQuestion:boolean = false;
 
   constructor(private simpleService: SimpleEvalService, public snackBar: MatSnackBar, private router: Router,
     private dataService: DataService) { }
@@ -35,13 +36,10 @@ export class EvaluationComponent implements OnInit {
       if(!this.radioAnswerHoldingArray.length){
        var question = this.simpleService.getFirstQuestion();
       }
-      else if(this.radioAnswerHoldingArray.length === 1){
-        var question = this.simpleService.getSecondQuestion();
+      else if(!this.isLastQuestion){
+        var question = this.simpleService.getNextQuestion(this.radioValues);
       }
-      else if(this.radioAnswerHoldingArray.length === 2){
-        var question = this.simpleService.getThirdQuestion();
-      }
-      else if(this.radioAnswerHoldingArray.length === 3 && this.answersAreUnique()){
+      else if(this.isLastQuestion && this.answersAreUnique()){
         ///check if all elements in array are different.
         //if yes then send answers to server.  if not, then take survey again.
         this.fetchNextQuestionWorked = false;
@@ -100,10 +98,16 @@ export class EvaluationComponent implements OnInit {
 
     showSendButton(){
       //make sendbtn appear
+      if(this.radioAnswerHoldingArray.length){
       let classes = {
-        'make-button-appear': this.radioAnswerHoldingArray.length === 3 && this.answersAreUnique()
+        'make-button-appear': 
+        (((this.radioAnswerHoldingArray[0].body 
+          == 'komplett neue Webseite von Grund auf') && (this.radioAnswerHoldingArray.length == 5)) ||
+          ((this.radioAnswerHoldingArray[0].body 
+            == 'Ich benötige lediglich einige Änderungen an einer bestehenden Webseite') && (this.radioAnswerHoldingArray.length == 4))) && this.answersAreUnique()
       }
       return classes;
+    }
     }  
 
     setDisabledButtonColorClass(){
@@ -140,6 +144,13 @@ export class EvaluationComponent implements OnInit {
     saveAnswerToArray(){
         try {
          this.radioAnswerHoldingArray.push(this.radioValues);
+         if(((this.radioAnswerHoldingArray[0].body 
+            == 'komplett neue Webseite von Grund auf') && (this.radioAnswerHoldingArray.length == 5)) ||
+            ((this.radioAnswerHoldingArray[0].body 
+              == 'Ich benötige lediglich einige Änderungen an einer bestehenden Webseite') && (this.radioAnswerHoldingArray.length == 4))
+         ){
+            this.isLastQuestion = true;
+         }
          console.log(this.radioAnswerHoldingArray);
          this.fetchNextQuestion();
         }

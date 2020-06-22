@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,10 @@ export class LoginComponent implements OnInit {
   myForm: FormGroup;
 
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
-      userName: ['', [
-        Validators.required,
-        Validators.minLength(5)
-      ]],
       email: ['', [
         Validators.required,
         Validators.email  
@@ -31,10 +28,6 @@ export class LoginComponent implements OnInit {
     })
   }
 
-get userName(){
-  return this.myForm.get('userName');
-}
-
 get email() {
   return this.myForm.get('email');
 }
@@ -43,10 +36,10 @@ get password(){
   return this.myForm.get('password');
 }
 
- onSubmit() {
-  this.userService.submitForm(this.myForm.value)
-    .subscribe(user => console.log(`our user is ${user}`),
-               error => console.log(`noooooooo`))
+onLoginSubmit() {
+  this.userService.loginUser(this.myForm.value)
+    .subscribe(user => this.router.navigate(['/front']),
+               error => console.error('noopie'));
   }
 
 }
