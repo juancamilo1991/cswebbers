@@ -16,27 +16,19 @@ const flash = require('express-flash');
 const session = require('express-session');
 
 
-const initializePassport = require('./passport-config');
-
-initializePassport(
-passport, 
-email => User.find({email: email}),
-id => User.find({id: id})
-);
-
+require('./passport-config')(passport);
 
 const app = express();
 const router = express.Router();    
 
 app.use(cors());
 app.use(bodyParser.json());
-
+app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(session({
     secret: 'aefvdvvvrAFBDARFDBAFD',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: true }
+    resave: true,
+    saveUninitialized: true
 }))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -49,14 +41,6 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('MongoDB database connection established succesfully!');
 });
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-    res.header('Access-Control-Allow-Headers', true);
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    next();
-})
 
 router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
              SimpleQandA.find({ 
@@ -353,33 +337,49 @@ router.route('/verySimpleQuestions/result').post(getAnswersTree, evaluatePrice, 
 });
 
 
-//user login
-router.route('/user/login').post((req, res, next) => {
-    passport.authenticate('local', (user, err, info) => {
-        if(err) { return next(err); }
-        if(!user){ res.json('access not granted'); }
-        req.logIn(user, (err) => {
-            if(err){ return next(err); }
-            return res.json(`Welcome, ${user.firstName}`)
-        })
-    })(req, res, next); 
-})
+
 
 
 //user registration
-router.route('/user/register').post(async (req, res) => {
+router.route('/user/register').post(async (req, res, next) => {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         req.body.password = hashedPassword;
         const user = new User(req.body);
         user.save()
         .then(user => {
-            res.json('user added succesfully!');
-        }).catch(error => {
+                  console.log(user);
+                  res.send({ 'what': 'uuuup' });
+            })
+            .catch(error => {
             res.json(`failed to add user`);
         })
+    })
+
+//user login
+router.route('/user/login').post((req, res, next) => {
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { 
+            console.log(info);
+            return res.end();
+        }
+        req.logIn(user, function(err) {
+            console.log(info);
+          if (err) { return next(err); }
+          return res.send('login succesfull');
+        });
+      })(req, res, next); 
+})
+
+
+//user logout
+router.route('/user/logout').post((req, res) => {
+    req.logout();
+    res.send({'logout msg':'succesfully logged out!'})
 })
 
 app.use('/', router);   
+
 
 
 const PORT = process.env.PORT || 4000;

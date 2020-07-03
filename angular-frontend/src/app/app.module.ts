@@ -31,6 +31,7 @@ import { SurveyAnswerComponent } from './survey/survey-answer/survey-answer.comp
 import { ProjectPageComponent } from './projects/project-page/project-page.component';
 import { SurveyAnswerPageComponent } from './survey/survey-answer-page/survey-answer-page.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { MyprojectComponent } from './components/myproject/myproject.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     SurveyAnswerComponent,
     ProjectPageComponent,
     SurveyAnswerPageComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    MyprojectComponent
   ],
   imports: [
     BrowserModule,

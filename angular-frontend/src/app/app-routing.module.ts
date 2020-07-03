@@ -7,6 +7,7 @@ import { LoginPageComponent } from './login-registration/login-page/login-page.c
 import { RegistrationPageComponent } from './login-registration/registration-page/registration-page.component';
 import { SurveyAnswerPageComponent } from './survey/survey-answer-page/survey-answer-page.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { MyprojectComponent } from './components/myproject/myproject.component';
 
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegistrationPageComponent },
   { path: 'results', component: SurveyAnswerPageComponent },
-  { path: 'spinner', component: LoadingSpinnerComponent }
+  { path: 'spinner', component: LoadingSpinnerComponent },
+  { path: 'myproject', component: MyprojectComponent }
 ];
 
 @NgModule({

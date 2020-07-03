@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -38,8 +39,10 @@ get password(){
 
 onLoginSubmit() {
   this.userService.loginUser(this.myForm.value)
-    .subscribe(user => this.router.navigate(['/front']),
-               error => console.error('noopie'));
+    .subscribe(user => {
+                this.router.navigate(['/front']);
+    },
+      error => console.error('noopie'));
   }
 
 }

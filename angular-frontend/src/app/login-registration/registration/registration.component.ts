@@ -56,8 +56,10 @@ get password(){
 
 onSubmit() {
 this.userService.submitForm(this.myForm.value)
-    .subscribe(user => this.router.navigate(['/login']),
-               
+    .subscribe(user => {
+                console.log(user)
+                this.router.navigate(['/login'])
+              }, 
                error => console.log(error));
   }
 

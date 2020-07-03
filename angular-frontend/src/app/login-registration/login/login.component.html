@@ -7,7 +7,7 @@
            <div>
             <p class="title">Email</p> 
             <label for="email"></label>
-            <input type="text" formControlName="email" id="email" required>
+            <input type="text" formControlName="email" name="email" id="email" required>
             <div class="error-msg" *ngIf="email.invalid && email.touched">
                 Please enter a valid email
             </div>
@@ -16,7 +16,7 @@
         <div>
             <p class="title">Password</p> 
             <label for="password"></label>
-            <input type="password" formControlName="password" id="password" required>
+            <input type="password" formControlName="password" name="password" id="password" required>
             <div class="error-msg" *ngIf="password.invalid && password.touched">
                 Please enter a valid password
             </div>

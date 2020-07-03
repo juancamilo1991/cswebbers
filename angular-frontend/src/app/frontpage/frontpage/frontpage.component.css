@@ -3,6 +3,9 @@
     flex-direction: row;
 }
 
+.flexbox-social-cards {
+    justify-content: space-evenly;
+}
 
 .flexbox-event-cards {
     background-color: #232323;
@@ -39,7 +42,6 @@
 }
 
 .flexbox-social-cards {
-    justify-content: center;
     background-color: whitesmoke;
     flex-wrap: wrap;
 }
