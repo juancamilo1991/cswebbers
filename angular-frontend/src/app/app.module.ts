@@ -32,6 +32,7 @@ import { ProjectPageComponent } from './projects/project-page/project-page.compo
 import { SurveyAnswerPageComponent } from './survey/survey-answer-page/survey-answer-page.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MyprojectComponent } from './components/myproject/myproject.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MyprojectComponent } from './components/myproject/myproject.component';
     ProjectPageComponent,
     SurveyAnswerPageComponent,
     LoadingSpinnerComponent,
-    MyprojectComponent
+    MyprojectComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
