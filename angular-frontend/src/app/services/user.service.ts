@@ -18,15 +18,16 @@ uri = 'http://localhost:4000/user';
   constructor(private http: HttpClient) { }
 
 submitForm(user):Observable<any>{
-  return this.http.post(`${this.uri}/register`, user);
+  return this.http.post(`${this.uri}/register`, user, httpOptions);
 }
 
 loginUser(loginUser):Observable<any>{
   return this.http.post(`${this.uri}/login`, loginUser);
 }
 
-getIt():Observable<any>{
-  return this.http.get(`${this.uri}/hello`);
+checkAuth():Observable<any>{
+  return this.http.get(`${this.uri}/myproject`);
 }
+
 
 }

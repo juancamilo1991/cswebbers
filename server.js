@@ -12,26 +12,12 @@ const evaluatePrice = require('./controllers/results');
 const getAnswersTree = require('./middleware/getTree');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const flash = require('express-flash');
 const session = require('express-session');
-
 
 require('./passport-config')(passport);
 
 const app = express();
 const router = express.Router();    
-
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(flash());
-app.use(session({
-    secret: 'aefvdvvvrAFBDARFDBAFD',
-    resave: true,
-    saveUninitialized: true
-}))
-app.use(passport.initialize())
-app.use(passport.session())
 
 //instance of mongodb Database
 mongoose.connect('mongodb://localhost:27017/csnow', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -41,6 +27,18 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('MongoDB database connection established succesfully!');
 });
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
              SimpleQandA.find({ 
@@ -337,9 +335,6 @@ router.route('/verySimpleQuestions/result').post(getAnswersTree, evaluatePrice, 
 });
 
 
-
-
-
 //user registration
 router.route('/user/register').post(async (req, res, next) => {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -347,35 +342,22 @@ router.route('/user/register').post(async (req, res, next) => {
         const user = new User(req.body);
         user.save()
         .then(user => {
-                  console.log(user);
-                  res.send({ 'what': 'uuuup' });
+            return res.json('registration succesfull')
             })
             .catch(error => {
             res.json(`failed to add user`);
         })
     })
-
 //user login
 router.route('/user/login').post((req, res, next) => {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
-        if (!user) { 
-            console.log(info);
-            return res.end();
-        }
-        req.logIn(user, function(err) {
-            console.log(info);
+        if (!user) { return res.json(info); }
+         req.login(user, function(err) {
           if (err) { return next(err); }
-          return res.send('login succesfull');
+            return res.status(200).json({'userName': user.firstName,'statusCode': 200});
         });
-      })(req, res, next); 
-})
-
-
-//user logout
-router.route('/user/logout').post((req, res) => {
-    req.logout();
-    res.send({'logout msg':'succesfully logged out!'})
+      })(req, res, next);
 })
 
 app.use('/', router);   

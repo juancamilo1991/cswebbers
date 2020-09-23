@@ -1,44 +1,45 @@
-<div class="register-registration-container">
-    <div class="register-registration-form">
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="login-registration-container">
+    <div class="login-registration-form">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="login-img"></div>
         <div>
-        <i class="fas fa-user-circle fa-2x">Register</i>
+            <p class="first-Name">Vorname</p> 
+            <label for="firstName"></label>
+            <input type="text" formControlName="firstName" name="firstName" id="firstName" required>
+            <div class="hint-message" *ngIf="firstName.invalid && firstName.touched">
+                Bitte geben Sie Ihren Vornamen an
+            </div>
+       
         </div>
         <div>
-        <p class="title">First Name</p> 
-        <label for="firstName"></label>
-        <input type="text" formControlName="firstName" id="firstName" required>
-        <div  class="error-msg"*ngIf="firstName.invalid && firstName.touched">
-            First Name must be at least 5 characters
+            <p class="last-Name">Nachname</p> 
+            <label for="lastName"></label>
+            <input type="text" formControlName="lastName" name="lastName" id="lastName" required>
+            <div class="hint-message" *ngIf="lastName.invalid && lastName.touched">
+                Bitte geben Sie Ihren Nachnamen an
+            </div>
+       
         </div>
-    </div>
-    <div>
-        <p class="title">Last Name</p> 
-        <label for="lastName"></label>
-        <input type="text" formControlName="lastName" id="lastName" required>
-        <div  class="error-msg" *ngIf="lastName.invalid && lastName.touched">
-            Last Name must be at least 5 characters
+           <div>
+            <p class="email-title">Email</p> 
+            <label for="email"></label>
+            <input type="text" formControlName="email" name="email" id="email" required>
+            <div class="hint-message" *ngIf="email.invalid && email.touched">
+                Bitte geben Sie eine gültige Email an.
+            </div>
+       
         </div>
-    </div>
         <div>
-        <p class="title">Email</p> 
-        <label for="email"></label>
-        <input type="text" formControlName="email" id="email" required>
-        <div  class="error-msg" *ngIf="email.invalid && email.touched">
-            Please enter a valid email
+            <p class="password-title">Passwort</p> 
+            <label for="password"></label>
+            <input type="password" formControlName="password" name="password" id="password" required>
+            <div class="hint-message" *ngIf="password.invalid && password.touched">
+                Passwort muss mindestens 8 Zeichen lang sein
+            </div>
         </div>
-    </div>
-    <div>
-        <p class="title">Password</p> 
-        <label for="password"></label>
-        <input type="password" formControlName="password" id="password" required>
-        <div  class="error-msg" *ngIf="password.invalid && password.touched">
-            Please enter a valid password
+        <div>
+            <button type="submit" [disabled]="myForm.invalid"> registrieren </button>
         </div>
+        </form>
     </div>
-    <div>
-        <button type="submit" [disabled]="myForm.invalid">Create Account</button>
-    </div>
-    </form>
-</div>
 </div>

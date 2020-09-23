@@ -8,6 +8,9 @@ import { RegistrationPageComponent } from './login-registration/registration-pag
 import { SurveyAnswerPageComponent } from './survey/survey-answer-page/survey-answer-page.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MyprojectComponent } from './components/myproject/myproject.component';
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { EverGuardService as EverGuard } from './services/ever-guard.service';
+
 
 
 
@@ -18,9 +21,9 @@ const routes: Routes = [
   { path: 'evaluation', component: MainEvaluationComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegistrationPageComponent },
-  { path: 'results', component: SurveyAnswerPageComponent },
-  { path: 'spinner', component: LoadingSpinnerComponent },
-  { path: 'myproject', component: MyprojectComponent }
+  { path: 'results', component: SurveyAnswerPageComponent, canActivate : [EverGuard] },
+  { path: 'spinner', component: LoadingSpinnerComponent, canActivate : [EverGuard] },
+  { path: 'myproject', component: MyprojectComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({

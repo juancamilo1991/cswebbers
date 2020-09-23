@@ -1,4 +1,5 @@
-<div>
+<div class="container">
+    <div>
     <app-evaluation-item *ngFor="let evaluation of evaluations" [evaluation]='evaluation' (radioValue)="onRadioValue($event)">
 
     </app-evaluation-item>
@@ -9,7 +10,8 @@
        
     </div>
     <div class="submit-group">
-        <button class="sendbtn" type="submit" [ngClass]="showSendButton()" (click)="sendAnswersToServer()">submit my Answers!</button>
+        <button class="sendbtn" type="submit" [ngClass]="showSendButton()" (click)="sendAnswersToServer()" (click)="submitGuard()">submit my Answers!</button>
+    </div>
     </div>
 </div>
 

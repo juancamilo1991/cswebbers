@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -20,12 +18,10 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
       firstName: ['', [
-        Validators.required,
-        Validators.minLength(5)
+        Validators.required
       ]],
       lastName: ['', [
-        Validators.required,
-        Validators.minLength(5)  
+        Validators.required 
       ]],
       email: ['', [
         Validators.required,
@@ -57,8 +53,14 @@ get password(){
 onSubmit() {
 this.userService.submitForm(this.myForm.value)
     .subscribe(user => {
+                console.log(user);
                 console.log(user)
+                if(user == 'registration succesfull'){
                 this.router.navigate(['/login'])
+                }
+                else {
+                  console.log('something went wrong');
+                }
               }, 
                error => console.log(error));
   }

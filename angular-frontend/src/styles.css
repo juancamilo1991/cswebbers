@@ -9,7 +9,12 @@
     --green: #6CFBCE;
     --seablue: #00D5EE;
     --skyblue: #00A6FF;
-    --background-black: #2e2929;
+    --purple: #826AED;
+    --lightblue: #C9F0FF;
+    --lightcyan: #EAFFFD;
+    --cultured: #EFEFF0;
+    --lavender: #D5CAD6;
+    --background-black: #252525;
     --background-white: #ffffff;
     --font-white: #f5fffa;
     --lightgrey: #696969;
@@ -23,6 +28,10 @@
 
 p {
     font-size: 16px;
+}
+
+div {
+    font-size: 20px;
 }
 
 body { margin: 0; }

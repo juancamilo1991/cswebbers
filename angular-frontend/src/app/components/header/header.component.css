@@ -1,87 +1,213 @@
 .flexbox-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+
+.link-box {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: black;
+    justify-content: space-evenly;
     align-items: center;
+    width: 500px;
+    height: 65px;
 }
 
-.nav-burger {
+.link-box .home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link-box .home div:nth-child(2) {
+  font-size: 1rem;
+}
+
+.link-box .home .ics {
+  background-image: url(../../../assets/img/animat-essential/animat-essential/diamond/animat-diamond-color.gif);
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+
+}
+
+.link-box .home:hover {
+  background-color: transparent;
+  transition: none;
+}
+
+.link {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 80px;
-}
-
-
-p {
-    color: white;
-}
-
-.login-registration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 20px;
-    background-color: var(--green);
+    padding: 10px;
     border: none;
-    border-radius: 2px;
-    margin-right: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
 }
 
-.login-registration:hover {
+.myproject {
+    padding: 10px;
+    color: white;
+    margin-right: 25px;
+    font-size: 1rem;
+}
+
+.myproject:hover {
     cursor: pointer;
-    background-color: var(--skyblue);
-    color: snow;
-    transition: all 0.2s ease-out;
+    transition: all ease-out 0.2s;
+    color: var(--green);
+    animation: wobble;
+    animation-duration: 1s;
 }
 
-.title {
-    color: snow;
-    width: 50px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.nav-burger .toggler {
-    width: 50px;
-    height: 50px;
+.link:hover {
+    background-color: #444444;
+    transition: all ease-out 0.2s;
     cursor: pointer;
-    z-index: 2;
-    opacity: 0;
-    margin: 0;
 }
 
-.nav-burger .burger {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+.flexbox-header ul {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 65px;
+  width: 100vw;
+  height: 0vh;
+  transition: height .2s ease-out;
+  background-color: black;
+  margin: 0;
+  padding: 0; 
+  list-style: none;
 }
 
-.nav-burger .burger > div {
-    position: absolute;
-    height: 2px;
-    width: 50%;
-    background-color: white;
+.flexbox-header ul li {
+  visibility: hidden;
+  padding: 15px;
+  border: none;
+  color: var(--font-white);
 }
 
-.nav-burger .burger > div::after, 
-.nav-burger .burger > div::before {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    content: '';
-    top: -7px;
-    background-color: inherit;
-    z-index: 1;
+.flexbox-header ul li:hover {
+  cursor: pointer;
+  color: var(--skyblue);
+  transition: all 0.2s linear; 
 }
 
-.nav-burger .burger > div::after {
-    top: 7px;
+.flexbox-header .toggler {
+  display: none;
+}
+
+.flexbox-header .toggler:checked + .hamburger > div {
+  transition: all 0.3s ease-out;
+  transform: rotate(-360deg)
+}
+
+.flexbox-header .toggler:checked ~ ul {
+  height: 80vh;
+}
+
+.flexbox-header .toggler:checked ~ ul li {
+  visibility: visible;
+}
+
+.flexbox-header .toggler:checked + .hamburger > div::before {
+  transition: all 0.3s ease-out;
+  transform: rotate(330deg);
+  top: -5px;
+  right: 17px;
+  width: 60%;
+}
+
+
+.flexbox-header .toggler:checked + .hamburger > div::after {
+  transition: all 0.3s ease-out;
+  transform: rotate(390deg);
+  top: 4px;
+  width: 60%;
+  right: 17px;
+}
+
+.hamburger {
+  display: none;
+  width: 50px;
+  height: 50px;  
+  position: relative;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+.hamburger > div {
+  position: relative;
+  width: 70%;
+  height: 3px;
+  background-color: ivory;
+  border-radius: 15px;
+}
+
+.hamburger > div::after {
+  position: absolute;
+  content: '';
+  top: 10px;
+  width: 100%;
+  height: 3px;
+  background-color: inherit;
+  border-radius: 15px;
+}
+
+.hamburger > div::before {
+  position: absolute;
+  content: '';
+  top: -10px;
+  width: 100%;
+  height: 3px;
+  border-radius: 15px;
+  background-color: inherit;
+}
+
+
+
+
+
+@media all and (max-width: 750px) {
+
+    .myproject {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flexbox-header {
+      justify-content: space-between;
+    }
+
+    .link-box .home {
+      display: flex !important;
+      justify-content: space-between;
+    }
+
+    .link-box {
+      justify-content: flex-start;
+    }
+    
+    .link-box .link {
+      display: none;
+    }
+
+
+
 }

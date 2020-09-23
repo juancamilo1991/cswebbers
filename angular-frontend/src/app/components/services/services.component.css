@@ -1,27 +1,31 @@
-.service-title {
+.service-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.service-background {
+    background-image: url(../../../assets/img/froala-design-blocks/imgs/shapes/1.svg);
+    background-repeat: no-repeat;
+    width: 1800px;
+    margin: 0 20px;
+}
+
+.service-sliders {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    min-height: 700px;
+    height: 600px;
 }
 
-.service-title .title {
+.service-text {
+    font-size: 2rem;
     width: 600px;
-    font-size: 70px;
-    line-height: 1.2;
-    margin: 50px 20px 0;
-
-}
-
-.service-title .filler {
-    background-image: url(../../../assets/img/undraw_to_the_moon_v1mv.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 400px;
-    height: 400px;
-    margin: 100px 20px 0;
+    text-align: center;
 }
 
 .cards {

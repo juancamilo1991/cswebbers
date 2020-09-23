@@ -4,10 +4,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-
+import { ButtonStateService } from '../../services/button-state.service';
 import { Evaluation } from '../../evaluation.model';
-import { async } from '@angular/core/testing';
-import { error } from 'util';
+
 
 @Component({
   selector: 'app-evaluation',
@@ -20,16 +19,18 @@ export class EvaluationComponent implements OnInit {
   evaluations: Evaluation[];
   finalAnswers: Evaluation[];
   radioValues:Evaluation;
-  radioAnswerHoldingArray:Evaluation[] = [];
+  public radioAnswerHoldingArray:Evaluation[] = [];
   fetchNextQuestionWorked:boolean = true;
   data:Number;
   isLastQuestion:boolean = false;
+  toggle: Boolean;
 
   constructor(private simpleService: SimpleEvalService, public snackBar: MatSnackBar, private router: Router,
-    private dataService: DataService) { }
+    private dataService: DataService, private btnService: ButtonStateService) { }
 
   ngOnInit() {
     this.fetchNextQuestion();
+    this.btnService.newData.subscribe(toggle => this.toggle = toggle);  
   }
 
     fetchNextQuestion(){
@@ -94,6 +95,10 @@ export class EvaluationComponent implements OnInit {
       this.router.navigate(['/spinner']);
       this.simpleService.getResult(this.radioAnswerHoldingArray).subscribe(data => 
         this.dataService.changeResult(data))
+    }
+
+    submitGuard(){
+     this.btnService.updateValue(true);
     }
 
     showSendButton(){

@@ -1,109 +1,220 @@
-.flexbox-social-cards, .flexbox-event-cards, .flexbox-sample-cards {
+.top-section {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color: #102B3F;
 }
-
-.flexbox-social-cards {
-    justify-content: space-evenly;
-}
-
-.flexbox-event-cards {
-    background-color: #232323;
+.wrapper {
+    flex-basis: 500px;
+    display: flex;
     justify-content: center;
-    padding: 150px 0;
-}
-
-.flexbox-event-cards .event {
-    width: 520px;
-    height: 230px;
-    padding: 0 50px;
-    box-sizing: border-box;
-    border: solid 3px white;
-    text-align: center;
-}
-
-.flexbox-event-cards .event > p {
-    margin-top: 100px
-}
-
-.flexbox-event-cards .event:hover {
-    transition: all 0.2s ease-out;
-    border: solid 5px white;
-    cursor: pointer;
-}
-
-.flexbox-event-cards .event > p {
-    font-size: 40px;
-}
-
-.flexbox-sample-cards {
-    background-color: whitesmoke;
-    padding: 0;
-}
-
-.flexbox-social-cards {
-    background-color: whitesmoke;
+    align-items: center;
     flex-wrap: wrap;
+    margin-left: 20px;
+}
+.filler {
+    flex-basis: 20px;
+    flex-grow: 1;
+}
+.container-bottom {
+    background-image: url(../../../assets/img/froala-design-blocks/imgs/shapes/9.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bottom-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    position: relative;
+    margin-bottom: 1100px;
+    background-color: var(--skyblue);
 }
 
-.contribution, .community, .patron {
-    width: 320px;
-    margin: 70px 0;
+.bottom-section::after {
+    content: '';
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    background-color: var(--skyblue);
+    bottom: -31px;
+    border: none;
+    transform: rotate(225deg);
+  }
+.card-container {
+    display: flex;
+    justify-content: center;
 }
-
-.contribution > p, .community > p, .patron > p {
-    font-size: 25px;
+.introduction-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-}
-
-p {
+    width: 700px;
+    font-size: 25px;
     color: white;
 }
-
-.btn {
-    width: 120px;
-    height: 60px;
-    box-sizing: border-box;
-    border: solid 2px white;
+.cards .icon {
+    height: 80px;
+    width: 80px;
     text-align: center;
-    margin: auto auto 20px;
+    background-size: cover;
+    margin: 0 auto;
 }
-
-.btn-down {
-    margin-top: 55px;
+.cards .icon1 {
+    background-image: url(../../../assets/img/froala-design-blocks/imgs/icons/monitor.svg);
 }
-
-.btn > p {
+.cards .icon2 {
+    background-image: url(../../../assets/img/froala-design-blocks/imgs/icons/layers.svg);
+}
+.cards .icon3 {
+    background-image: url(../../../assets/img/froala-design-blocks/imgs/icons/compass.svg);
+}
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 1800px;
+}
+.cards .card {
+    font-size: 1.2rem;
+    margin: 10px 10px;
+    border: none;
+    color: white;
+    text-align: center;
+}
+.future-cards-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -200px;
+}
+.future-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 80vh;
+    margin-top: -200px;
+    width: 1800px;
+}
+.future-card {
+    width: 500px;
+    margin: 0px 20px;
+    color: #102B3F;
+    font-size: 1.2rem;
+}
+.future-card > div {
+    font-size: 3rem;
+    color: var(--purple);
+}
+.cards > div {
+    background-color: var(--seablue);
+    width: 300px;
+    padding: 30px;
+    margin: auto 20px;
+    border: none;
+    border-radius: 30px;
+}
+.cards .icon-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    color: var(--blue);
+    font-size: 40px;
+}
+.register {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    background-color: var(--skyblue);
+}
+.img-group {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-bottom: 100vh solid white;
+    border-left: 60vw solid transparent;
+}
+.get-started {
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    z-index: 9;
+}
+.title {
+    font-size: 60px;
+    line-height: 80px;
     font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
 }
+.diamond-gif {
+    width: 200px;
+    height: 200px;
+    background-image: url(../../../assets/img/animat-essential/animat-essential/diamond/animat-diamond-color.gif);
+    background-size: cover;
+    margin: 0 auto;
+    
+}
+.register > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: none;
+    border-radius: 40px;
+    padding: 40px;
+    width: 900px;
+}
+.register-icon {
+    background-image: url(../../../assets/img/froala-design-blocks/imgs/icons/gift.svg);
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    margin: 0 30px;
+}
+.register-text {
+    color: white;
+    max-width: 500px;
+    font-size: 1.2rem;
+    margin: 0 30px;
 
+}
+.btn {
+    height: 40px;
+    width: 200px;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--green);
+    color: black;
+    margin-top: 15px;
+    font-size: 1rem;
+}
 .btn:hover {
-    transition: all 0.2s ease-out;
-    border: solid 5px white;
     cursor: pointer;
 }
 
-.contribution, .community, .patron {
-    transition: all 0.2s ease-out;
-    position: relative;
-    top: 0;
-}
+@media all and (max-width: 750px) {
+   .filler, .img-group {
+        display: none;
+    }
 
-.contribution:hover, .community:hover, .patron:hover {
-    top: -10px;
-    box-shadow: 0px 20px 50px -2px black;
-
-}
-
-.contribution {
-    background-color: #AD0707;
-}
-
-.community {
-    background-color: #E8333C;
+    .top-section {
+        justify-content: center;
+        min-height: 70vh;
+    }
 
 }
 
-.patron {
-    background-color: #EF412F;
-}

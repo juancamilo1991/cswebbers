@@ -3,42 +3,90 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 600px;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../../../assets/img/asteroids.jpg);
+}
+
+.login-registration-form form .login-img {
+    margin: 20px auto 10px;
+    height: 70px;
+    width: 70px;
+    background-image: url(../../../assets/img/login2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .login-registration-form form{
-    width: 300px;
-    height: 450px;
-    border: solid 1px #232323;
-    border-radius: 10px;
+    width: 600px;
+    min-height: 450px;
+    border: none;
+    padding-bottom: 20px;
+    border-radius: 40px;
     display: flex;
+    border: none;
+    background-color:var(--background-white);
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-.error-msg {
-    margin-left: 25px;
+.login-registration-form form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-registration-form form div > p {
+    line-height: 0rem;
+    padding: 0;
+}
+
+.email-title {
+    margin-right: 400px;
+}
+
+.password-title {
+    margin-right: 365px;
+}
+
+.password-title, .email-title {
+    color: var(--lightgrey);
+}
+
+
+.hint-message {
     color: red;
     font-size: small;
 }
 
-.title {
-    display: inline-block;
-    margin: 0 auto 5px 25px;
-    line-height: 0;
 
-}
-
-.login-registration-form form #userName, 
 .login-registration-form form #email,
 .login-registration-form form #password   {
-    width: 250px;
-    height: 25px;
-    border: solid 1px white;
+    width: 450px;
+    height: 35px;
+    border: solid 1px var(--lightgrey);
     border-radius: 2px;
-    margin: auto 20px auto;
-    box-shadow: 0 0 1px 1px #EF412F;
+    margin: 5px auto 5px;
+}
+
+.err-message-box {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 60px;
+    margin: 0 20px 0;
+    border-radius: 5px;
+    background-color: rgb(243, 174, 167);
+}
+
+.message-text {
+    margin: 0;
+    padding: 0;
+    line-height: 0rem;
+    color: rgb(184, 14, 14);
 }
 
 .fas, .fa-user-circle {
@@ -47,15 +95,60 @@
 
 form button {
     margin: 10px 10px 30px;
-    width: 250px;
-    height: 30px;
-    background-color: tomato;
-    color: whitesmoke;
+    width: 450px;
+    height: 50px;
+    background-color: var(--green);
+    color: #000000;
     font-weight: bold;
     border: none;
-    border-radius: 2px;
+    border-radius: 30px;
+}
+
+form .register {
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.664)
+}
+
+form .register:hover {
+    transition: all .2s linear;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+form button:hover {
+    transition: all 0.3s ease-out;
+    background-color: rgb(40, 238, 175);
 }
 
 form button:hover {
     cursor: pointer;
+}
+
+/* Media Queries **/
+
+@media all and (max-width: 620px){
+    .login-registration-form form {
+        width: 300px;
+    }
+
+    .login-registration-form form #userName, 
+    .login-registration-form form #email,
+    .login-registration-form form #password {
+        width: 250px;
+}
+
+.email-title {
+    margin-right: 200px;
+}
+
+.password-title {
+    margin-right: 180px;
+}
+
+form button {
+    width: 250px;
+}
+
 }

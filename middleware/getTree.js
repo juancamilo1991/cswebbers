@@ -3,7 +3,7 @@ const SimpleQandA = require('../models/qanda');
 
 module.exports = getAnswersTree = async (req, res, next) => {
   
-   var treeAnswer = await TreeSearch.find({'Ich benötige lediglich einige Änderungen an einer bestehenden Webseite': {
+   let treeAnswer = await TreeSearch.find({'Ich benötige lediglich einige Änderungen an einer bestehenden Webseite': {
     'einfache Webseite': {
        'Design': {
            'Ja': 700,

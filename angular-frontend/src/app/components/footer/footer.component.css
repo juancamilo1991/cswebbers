@@ -12,7 +12,11 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 30px;
-    flex-grow: 1;
+    width: 1800px;
+}
+
+.flexbox-footer-contact, .flexbox-footer-services, .flexbox-footer-sitemap {
+    font-size: 1rem;
 }
 
 .flexbox-footer-line {
@@ -29,6 +33,7 @@
     justify-content: space-between;
     align-items: center;
     width: 150px;
+    font-size: 1rem;
 }
 
 .fa-instagram, .fa-twitter, .fa-pinterest {
