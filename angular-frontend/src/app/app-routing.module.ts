@@ -25,9 +25,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'results', component: SurveyAnswerPageComponent, canActivate : [EverGuard] },
   { path: 'spinner', component: LoadingSpinnerComponent, canActivate : [EverGuard] },
-  { path: 'myproject', component: MyprojectComponent, canActivate : [AuthGuard] },
- 
-
+  { path: 'myproject', component: MyprojectComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({
