@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-image: url(../../../assets/img/wild-sea.png);
+}
+
+.main-content {
+    max-width: 500px;
+    min-height: auto;
+    margin: 0 20px;
+}
+
+.rocket-gif {
+    width: 150px;
+    height: 150px;
+    background-image: url(../../../assets/img/animat-essential/animat-essential/rocket/animat-rocket-color.gif);
+    background-size: cover;
+}
+
+.container .main-content > section {
+    font-size: 1rem;
+}
+
+.container .main-content > section, h1 {
+    color: var(--background-white);
+}
