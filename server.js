@@ -365,7 +365,6 @@ router.route('/user/login').post((req, res, next) => {
 app.use('/', router);   
 
 
-if(process.env.NODE_ENV === 'production'){
 
     app.use(express.static('./angular-frontend/dist/angular-csProject'))
 
@@ -373,7 +372,6 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile('index.html', {root: 'angular-frontend/dist/angular-csProject/'})
      })
 
-}
     
 
 
