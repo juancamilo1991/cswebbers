@@ -12,7 +12,7 @@ const session = require('express-session');
 const path = require('path');
 
 require('./passport-config')(passport);
-require('dotenv').config()
+require('./node_modules/dotenv').config()
 
 const app = express();
 const router = express.Router();    
