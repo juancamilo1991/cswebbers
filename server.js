@@ -9,10 +9,8 @@ const getAnswersTree = require('./middleware/getTree');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
-const path = require('path');
 
 require('./passport-config')(passport);
-require('./node_modules/dotenv').config()
 
 const app = express();
 const router = express.Router();    
@@ -30,7 +28,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'process.env.SESSION_SECRETfsafergeg',
     resave: false,
     saveUninitialized: false
 }))
