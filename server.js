@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -11,6 +16,7 @@ const passport = require('passport');
 const session = require('express-session');
 
 require('./passport-config')(passport);
+
 
 const app = express();
 const router = express.Router();    
@@ -28,7 +34,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: 'process.env.SESSION_SECRETfsafergeg',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }))
