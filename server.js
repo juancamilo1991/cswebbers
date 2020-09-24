@@ -1,7 +1,3 @@
-if(process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-}
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -13,8 +9,10 @@ const getAnswersTree = require('./middleware/getTree');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
+const path = require('path');
 
 require('./passport-config')(passport);
+require('dotenv').config()
 
 const app = express();
 const router = express.Router();    
@@ -362,6 +360,14 @@ router.route('/user/login').post((req, res, next) => {
 
 app.use('/', router);   
 
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('angular-frontend/dist'))
+
+    app.get('*', (req, res) => { 
+        res.sendFile(path.resolve(__))
+     })
+}
 
 
 const PORT = process.env.PORT || 4000;
