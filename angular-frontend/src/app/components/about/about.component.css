@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    background-image: url(../../../assets/img/wild-sea.png);
 }
 
 .main-content {
@@ -22,8 +21,4 @@
 
 .container .main-content > section {
     font-size: 1rem;
-}
-
-.container .main-content > section, h1 {
-    color: var(--background-white);
 }
