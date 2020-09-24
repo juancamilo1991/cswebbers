@@ -1,8 +1,3 @@
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config()
-}
-
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -16,7 +11,7 @@ const passport = require('passport');
 const session = require('express-session');
 
 require('./passport-config')(passport);
-
+require('dotenv').config();
 
 const app = express();
 const router = express.Router();    
