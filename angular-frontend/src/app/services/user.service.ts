@@ -13,20 +13,19 @@ const httpOptions = {
 })
 export class UserService {
 
-uri = 'http://localhost:4000/user';
 
   constructor(private http: HttpClient) { }
 
 submitForm(user):Observable<any>{
-  return this.http.post(`${this.uri}/register`, user, httpOptions);
+  return this.http.post(`user/register`, user, httpOptions);
 }
 
 loginUser(loginUser):Observable<any>{
-  return this.http.post(`${this.uri}/login`, loginUser);
+  return this.http.post(`user/login`, loginUser);
 }
 
 checkAuth():Observable<any>{
-  return this.http.get(`${this.uri}/myproject`);
+  return this.http.get(`user/myproject`);
 }
 
 

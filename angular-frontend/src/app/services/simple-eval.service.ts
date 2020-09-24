@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { StickyDirection } from '@angular/cdk/table';
 
 import { Evaluation } from '../evaluation.model';
 import { Observable } from 'rxjs';
@@ -16,20 +15,19 @@ const httpOptions = {
 })
 export class SimpleEvalService {
 
-  uri = 'http://localhost:4000/verySimpleQuestions';
 
   constructor(private http: HttpClient) { }
 
   getFirstQuestion():Observable<any>{
-    return this.http.get(`${this.uri}/firstquestion`);
+    return this.http.get(`verySimpleQuestions/firstquestion`);
   }
 
   getNextQuestion(evaluation:Evaluation):Observable<any>{
-    return this.http.post(`${this.uri}/nextQuestion`, evaluation);
+    return this.http.post(`verySimpleQuestions/nextQuestion`, evaluation);
   }
 
   getResult(evaluation:Evaluation[]):Observable<any>{
-    return this.http.post(`${this.uri}/result`, evaluation, httpOptions);
+    return this.http.post(`verySimpleQuestions/result`, evaluation, httpOptions);
   }
 
 }

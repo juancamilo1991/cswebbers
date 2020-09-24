@@ -361,16 +361,16 @@ router.route('/user/login').post((req, res, next) => {
 app.use('/', router);   
 
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('angular-frontend/dist'))
+
+    app.use(express.static('./angular-frontend/dist/angular-csProject'))
 
     app.get('*', (req, res) => { 
-        res.sendFile(path.resolve(__))
+        res.sendFile('index.html', {root: 'angular-frontend/dist/angular-csProject/'})
      })
-}
 
 
-const PORT = process.env.PORT || 4000;
+
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     console.log(`The express server is running on port ${PORT}`);
