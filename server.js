@@ -9,6 +9,7 @@ const getAnswersTree = require('./middleware/getTree');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
+const path = require('path');
 
 require('./passport-config')(passport);
 require('dotenv').config();
@@ -364,7 +365,7 @@ app.use('/', router);
     app.use(express.static('./angular-frontend/dist/angular-csProject'))
 
     app.get('*', (req, res) => { 
-        res.sendFile('index.html', {root: 'angular-frontend/dist/angular-csProject/'})
+        res.sendFile(path.resolve(__dirname, 'angular-frontend', 'dist', 'index.html'))
      })
 
     
