@@ -12,7 +12,6 @@ const session = require('express-session');
 const path = require('path');
 
 require('./passport-config')(passport);
-require('dotenv').config();
 
 const app = express();
 const router = express.Router();    
@@ -30,7 +29,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'woiefoiwjfojofijwoifjowi',
     resave: false,
     saveUninitialized: false
 }))
