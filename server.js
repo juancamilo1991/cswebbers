@@ -365,6 +365,7 @@ app.use('/', router);
     app.use(express.static('./angular-frontend/dist/angular-csProject'))
 
     app.get('*', (req, res) => { 
+        console.log('hi')
         res.sendFile(path.resolve(__dirname, 'angular-frontend', 'dist', 'index.html'))
      })
 
