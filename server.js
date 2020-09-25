@@ -16,7 +16,7 @@ const app = express();
 const router = express.Router();    
 
 //instance of mongodb Database
-mongoose.connect('mongodb://localhost:27017/csnow', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://Camilo:Bigramy245@cluster0.0do9i.mongodb.net/csnow?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
 
@@ -359,11 +359,9 @@ router.route('/user/login').post((req, res, next) => {
 app.use('/', router);   
 
 
-
     app.use(express.static('./angular-frontend/dist/angular-csProject'))
 
     app.get('*', (req, res) => { 
-        console.log('hi')
         res.sendFile('index.html', {root: 'angular-frontend/dist/angular-csProject'})
      })
 
