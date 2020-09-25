@@ -28,7 +28,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: 'woiefoiwjfojofijwoifjowi',
+    secret: 'woiefoiwjfojofijwoifjowiefer',
     resave: false,
     saveUninitialized: false
 }))
