@@ -9,6 +9,7 @@ const getAnswersTree = require('./middleware/getTree');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
+const path = require('path');
 const MongoStore = require('connect-mongo')(session);
 
 require('./passport-config')(passport);
@@ -363,10 +364,10 @@ app.use('/', router);
 
 if(process.env.NODE_ENV === 'production'){
 
-    app.use(express.static('./angular-frontend/dist/angular-csProject'))
+    app.use(express.static('angular-frontend/dist'))
 
     app.get('*', (req, res) => { 
-        res.sendFile('index.html', {root: 'angular-frontend/dist/angular-csProject/'})
+        res.sendFile(path.resolve(__dirname, 'angular-frontend', 'dist', 'index.html'))
      })
 }
     
