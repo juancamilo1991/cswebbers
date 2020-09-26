@@ -361,12 +361,13 @@ router.route('/user/login').post((req, res, next) => {
 app.use('/', router);   
 
 
+if(process.env.NODE_ENV === 'production'){
     app.use(express.static('./angular-frontend/dist/angular-csProject'))
 
     app.get('*', (req, res) => { 
         res.sendFile('index.html', {root: 'angular-frontend/dist/angular-csProject/'})
      })
-
+    }
     
 
 const PORT = process.env.PORT || 8080;
