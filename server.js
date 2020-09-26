@@ -9,6 +9,7 @@ const getAnswersTree = require('./middleware/getTree');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 require('./passport-config')(passport);
 
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
     secret: 'woiefoiwjfojofijwoifjowiefer',
+    store: new MongoStore({mongooseConnection: connection}),
     resave: false,
     saveUninitialized: false
 }))
