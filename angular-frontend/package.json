@@ -1,10 +1,8 @@
-{
-  "name": "angular-cs-project",
+{ "name": "angular-cs-project",
   "version": "0.0.0",
-
-  "scripts": {
+   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
