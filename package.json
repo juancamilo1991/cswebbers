@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix angular-frontend && npm run build --prefix angular-frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd angular-frontend && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
