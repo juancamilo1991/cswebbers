@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SimpleEvalService } from '../../services/simple-eval.service';
-import {MatListModule} from '@angular/material/list';
 import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
