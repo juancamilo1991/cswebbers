@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Evaluation } from '../evaluation.model';
+import { Evaluation } from '../models/Evaluation.model';
 import { Observable } from 'rxjs';
 
 const httpOptions = {

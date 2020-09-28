@@ -4,7 +4,7 @@ import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { ButtonStateService } from '../../services/button-state.service';
-import { Evaluation } from '../../evaluation.model';
+import { Evaluation } from '../../models/Evaluation.model';
 
 
 @Component({

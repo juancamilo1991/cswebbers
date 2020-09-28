@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Evaluation } from '../../../app/Evaluation.model';
 
 @Component({
   selector: 'app-evaluation-process',
