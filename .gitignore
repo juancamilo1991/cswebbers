@@ -1,4 +1,4 @@
-node_modules
+/node_modules
 .env
 angular-frontend/src/assets/img/andrea-guadagno-nsZJfc0N-Ec-unsplash.jpg
 angular-frontend/src/assets/img/celebration.png

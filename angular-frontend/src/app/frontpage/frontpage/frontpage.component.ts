@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
-import * as Rellax from 'Rellax';
 
 @Component({
   selector: 'app-frontpage',
@@ -13,6 +12,5 @@ export class FrontpageComponent implements OnInit {
 
   ngOnInit() {
     AOS.init();
-    let rellax = new Rellax('.rellax');
   } 
 }

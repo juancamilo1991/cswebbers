@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SimpleEvalService } from '../../services/simple-eval.service';
 import * as AOS from 'aos';
-import * as Rellax from 'Rellax';
 
 
 
@@ -17,7 +16,6 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit() {
     AOS.init();
-    let rellax = new Rellax('.rellax');
   }
 
   goToEvaluation(){
