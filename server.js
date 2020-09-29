@@ -39,7 +39,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-router.route('verySimpleQuestions/firstquestion').get((req, res) => {
+router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
              SimpleQandA.find({ 
                  title: { 
                      $in: [
@@ -58,7 +58,7 @@ router.route('verySimpleQuestions/firstquestion').get((req, res) => {
         })    
     });
 
-    router.route('verySimpleQuestions/newSiteQuestion').get((req, res) => {
+    router.route('/verySimpleQuestions/newSiteQuestion').get((req, res) => {
         SimpleQandA.find({ 
             title: { 
                 $in: [
@@ -214,7 +214,7 @@ router.route('verySimpleQuestions/updateSiteCheckupQuestion').get((req, res) => 
 })    
 });
 
-router.route('verySimpleQuestions/nextQuestion').post((req, res) => {
+router.route('/verySimpleQuestions/nextQuestion').post((req, res) => {
     if(req.body.title == 'complete new Site'){
         SimpleQandA.find({title: {$in: [
             'simple or e-commerce',
@@ -329,7 +329,7 @@ router.route('verySimpleQuestions/nextQuestion').post((req, res) => {
 })
 
 //calculate survey final price. Return answer to the view
-router.route('verySimpleQuestions/result').post(getAnswersTree, evaluatePrice, (req, res) => {  
+router.route('/verySimpleQuestions/result').post(getAnswersTree, evaluatePrice, (req, res) => {  
     res.json(req.finalAnswer);
 });
 
