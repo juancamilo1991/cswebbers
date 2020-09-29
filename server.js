@@ -39,7 +39,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
+router.route('verySimpleQuestions/firstquestion').get((req, res) => {
              SimpleQandA.find({ 
                  title: { 
                      $in: [
@@ -58,7 +58,7 @@ router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
         })    
     });
 
-    router.route('/verySimpleQuestions/newSiteQuestion').get((req, res) => {
+    router.route('verySimpleQuestions/newSiteQuestion').get((req, res) => {
         SimpleQandA.find({ 
             title: { 
                 $in: [
@@ -78,7 +78,7 @@ router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
    })    
 });
 
-router.route('/verySimpleQuestions/howManyPagesQuestion').get((req, res) => {
+router.route('verySimpleQuestions/howManyPagesQuestion').get((req, res) => {
     SimpleQandA.find({ 
         title: { 
             $in: [
@@ -98,7 +98,7 @@ router.route('/verySimpleQuestions/howManyPagesQuestion').get((req, res) => {
 })    
 });
 
-router.route('/verySimpleQuestions/newSiteAnnualCheckUpsQuestion').get((req, res) => {
+router.route('verySimpleQuestions/newSiteAnnualCheckUpsQuestion').get((req, res) => {
     SimpleQandA.find({ 
         title: { 
             $in: [
@@ -117,7 +117,7 @@ router.route('/verySimpleQuestions/newSiteAnnualCheckUpsQuestion').get((req, res
 })    
 });
 
-router.route('/verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
+router.route('verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
     SimpleQandA.find({ 
         title: { 
             $in: [
@@ -136,7 +136,7 @@ router.route('/verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
 })    
 });
 
-router.route('/verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
+router.route('verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
     SimpleQandA.find({ 
         title: { 
             $in: [
@@ -155,7 +155,7 @@ router.route('/verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
 })    
 });
 
-router.route('/verySimpleQuestions/updateSiteQuestion').get((req, res) => {
+router.route('verySimpleQuestions/updateSiteQuestion').get((req, res) => {
     SimpleQandA.find({ 
         title: { 
             $in: [
@@ -175,7 +175,7 @@ router.route('/verySimpleQuestions/updateSiteQuestion').get((req, res) => {
 })    
 });
 
-router.route('/verySimpleQuestions/updateSiteDesignQuestion').get((req, res) => {
+router.route('verySimpleQuestions/updateSiteDesignQuestion').get((req, res) => {
     SimpleQandA.find({ 
         title: { 
             $in: [
@@ -195,7 +195,7 @@ router.route('/verySimpleQuestions/updateSiteDesignQuestion').get((req, res) => 
 })    
 });
 
-router.route('/verySimpleQuestions/updateSiteCheckupQuestion').get((req, res) => {
+router.route('verySimpleQuestions/updateSiteCheckupQuestion').get((req, res) => {
     SimpleQandA.find({ 
         title: { 
             $in: [
@@ -214,7 +214,7 @@ router.route('/verySimpleQuestions/updateSiteCheckupQuestion').get((req, res) =>
 })    
 });
 
-router.route('/verySimpleQuestions/nextQuestion').post((req, res) => {
+router.route('verySimpleQuestions/nextQuestion').post((req, res) => {
     if(req.body.title == 'complete new Site'){
         SimpleQandA.find({title: {$in: [
             'simple or e-commerce',
@@ -329,13 +329,13 @@ router.route('/verySimpleQuestions/nextQuestion').post((req, res) => {
 })
 
 //calculate survey final price. Return answer to the view
-router.route('/verySimpleQuestions/result').post(getAnswersTree, evaluatePrice, (req, res) => {  
+router.route('verySimpleQuestions/result').post(getAnswersTree, evaluatePrice, (req, res) => {  
     res.json(req.finalAnswer);
 });
 
 
 //user registration
-router.route('/user/register').post(async (req, res, next) => {
+router.route('user/register').post(async (req, res, next) => {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         req.body.password = hashedPassword;
         const user = new User(req.body);
@@ -348,7 +348,7 @@ router.route('/user/register').post(async (req, res, next) => {
         })
     })
 //user login
-router.route('/user/login').post((req, res, next) => {
+router.route('user/login').post((req, res, next) => {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
         if (!user) { return res.json(info); }
