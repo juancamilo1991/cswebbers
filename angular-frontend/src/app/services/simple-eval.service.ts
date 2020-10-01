@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class SimpleEvalService {
 
- uri = 'https://shrouded-meadow-54739.herokuapp.com';
+uri = 'https://shrouded-meadow-54739.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 

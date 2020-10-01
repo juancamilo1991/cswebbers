@@ -335,7 +335,7 @@ router.route('/verySimpleQuestions/result').post(getAnswersTree, evaluatePrice, 
 
 
 //user registration
-router.route('user/register').post(async (req, res, next) => {
+router.route('/user/register').post(async (req, res, next) => {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         req.body.password = hashedPassword;
         const user = new User(req.body);
@@ -348,7 +348,7 @@ router.route('user/register').post(async (req, res, next) => {
         })
     })
 //user login
-router.route('user/login').post((req, res, next) => {
+router.route('/user/login').post((req, res, next) => {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
         if (!user) { return res.json(info); }

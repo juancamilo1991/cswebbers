@@ -13,19 +13,21 @@ const httpOptions = {
 })
 export class UserService {
 
+  uri = 'https://shrouded-meadow-54739.herokuapp.com';
+
 
   constructor(private http: HttpClient) { }
 
 submitForm(user):Observable<any>{
-  return this.http.post(`user/register`, user, httpOptions);
+  return this.http.post(`${this.uri}/user/register`, user, httpOptions);
 }
 
 loginUser(loginUser):Observable<any>{
-  return this.http.post(`user/login`, loginUser);
+  return this.http.post(`${this.uri}/user/login`, loginUser);
 }
 
 checkAuth():Observable<any>{
-  return this.http.get(`user/myproject`);
+  return this.http.get(`${this.uri}/user/myproject`);
 }
 
 
