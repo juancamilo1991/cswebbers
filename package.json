@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "client": "cd angular-frontend && ng serve --port 4202",
     "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd angular-frontend && npm install"
   },
   "engines": {
@@ -18,8 +20,10 @@
   "dependencies": {
     "async": "^3.2.0",
     "bcrypt": "^4.0.1",
+    "concurrently": "^5.3.0",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",

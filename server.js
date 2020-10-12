@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,6 +11,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
+const { mongoURI } = require('./config/keys');
 const MongoStore = require('connect-mongo')(session);
 
 require('./passport-config')(passport);
@@ -18,7 +20,7 @@ const app = express();
 const router = express.Router();    
 
 //instance of mongodb Database
-mongoose.connect('mongodb+srv://Camilo:Bigramy245@cluster0.0do9i.mongodb.net/csnow?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
 
@@ -30,7 +32,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: 'woiefoiwjfojofijwoifjowiefer',
+    secret: process.env.SESSION-SECRET,
     store: new MongoStore({mongooseConnection: connection}),
     resave: false,
     saveUninitialized: false
@@ -250,6 +252,7 @@ router.route('/verySimpleQuestions/nextQuestion').post((req, res) => {
     else if((req.body.title == 'new Site simple site amount pages') || 
             (req.body.title == 'new Site simple site amount pages more') ||
             (req.body.title == 'new Site simple site amount pages most')){
+
         SimpleQandA.find({title: {$in: [
             'maintainance',
             'new Site simple site amount pages yes',
@@ -280,7 +283,7 @@ router.route('/verySimpleQuestions/nextQuestion').post((req, res) => {
     }
     else if(req.body.title == 'changes'){
         SimpleQandA.find({title: {$in: [
-            'simple or e-commerce',
+            'simple or e-commerce changes',
             'simple Site',
             'small app',
             'complex e-commerce'
@@ -372,7 +375,7 @@ if(process.env.NODE_ENV === 'production'){
 }
     
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
     console.log(`The express server is running on port ${PORT}`);

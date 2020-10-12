@@ -15,20 +15,21 @@ const httpOptions = {
 })
 export class SimpleEvalService {
 
-uri = 'https://shrouded-meadow-54739.herokuapp.com';
+  dev_uri = 'http://localhost:4000';
+  prod_uri = 'https://shrouded-meadow-54739.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 
   getFirstQuestion():Observable<any>{
-    return this.http.get(`${this.uri}/verySimpleQuestions/firstquestion`);
+    return this.http.get(`${this.dev_uri}/verySimpleQuestions/firstquestion`);
   }
 
   getNextQuestion(evaluation:Evaluation):Observable<any>{
-    return this.http.post(`${this.uri}/verySimpleQuestions/nextQuestion`, evaluation);
+    return this.http.post(`${this.dev_uri}/verySimpleQuestions/nextQuestion`, evaluation);
   }
 
   getResult(evaluation:Evaluation[]):Observable<any>{
-    return this.http.post(`${this.uri}/verySimpleQuestions/result`, evaluation, httpOptions);
+    return this.http.post(`${this.dev_uri}/verySimpleQuestions/result`, evaluation, httpOptions);
   }
 
 }
