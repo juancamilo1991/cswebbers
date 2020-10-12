@@ -32,7 +32,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-    secret: process.env.SESSION-SECRET,
+    secret: process.env.SESSION_SECRET,
     store: new MongoStore({mongooseConnection: connection}),
     resave: false,
     saveUninitialized: false
