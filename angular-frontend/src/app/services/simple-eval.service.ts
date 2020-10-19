@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Evaluation } from '../models/Evaluation.model';
+import { Question } from '../models/Question.model';
+
 import { Observable } from 'rxjs';
 
 const httpOptions = {
@@ -19,15 +21,15 @@ export class SimpleEvalService {
   constructor(private http: HttpClient) { }
 
   getFirstQuestion():Observable<any>{
-    return this.http.get(`/verySimpleQuestions/firstquestion`);
+    return this.http.get(`http://localhost:8080/verySimpleQuestions/firstquestion`);
   }
 
   getNextQuestion(evaluation:Evaluation):Observable<any>{
-    return this.http.post(`/verySimpleQuestions/nextQuestion`, evaluation);
+    return this.http.post(`http://localhost:8080/verySimpleQuestions/nextQuestion`, evaluation);
   }
 
   getResult(evaluation:Evaluation[]):Observable<any>{
-    return this.http.post(`/verySimpleQuestions/result`, evaluation, httpOptions);
+    return this.http.post(`http://localhost:8080/verySimpleQuestions/result`, evaluation, httpOptions);
   }
 
 }

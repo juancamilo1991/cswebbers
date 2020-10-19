@@ -17,15 +17,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 submitForm(user):Observable<any>{
-  return this.http.post(`/user/register`, user, httpOptions);
+  return this.http.post(`http://localhost:8080/user/register`, user, httpOptions);
 }
 
 loginUser(loginUser):Observable<any>{
-  return this.http.post(`/user/login`, loginUser);
+  return this.http.post(`http://localhost:8080/user/login`, loginUser);
 }
 
 checkAuth():Observable<any>{
-  return this.http.get(`/user/myproject`);
+  return this.http.get(`http://localhost:8080/user/myproject`);
 }
 
 

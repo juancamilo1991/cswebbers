@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
-const { mongoURI } = require('./config/keys');
+// const { mongoURI } = require('./config/keys');
 const MongoStore = require('connect-mongo')(session);
 
 require('./passport-config')(passport);
@@ -21,8 +21,9 @@ require('./passport-config')(passport);
 const app = express();
 const router = express.Router();    
 
+//'mongodb://localhost:27017/csnow'
 //instance of mongodb Database
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
 
@@ -43,8 +44,40 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
+
+
+// *-------------------- All Queries here --------------------*
+
+
+// router.route('/verySimpleQuestions/addAll').post((req, res) => {
+//     let questions = req.body;
+//     questions.forEach(element => {
+//         let entry = new SimpleQandA(element);
+//         entry.save()
+//         .then(result => {
+//             console.log('succesfully added to db');
+//         })
+//         .catch(err => {
+//             res.json('failed to add question');
+//         })
+//     });
+// })
+
+// router.route('/verySimpleQuestions/addTreeSearch').post((req, res) => {
+//     let nestedTree = new TreeSearch(req.body);
+//     nestedTree.save()
+//     .then(ans => {
+//         res.json('sucesfully added to db');
+//     })
+//     .catch(err => {
+//         console.error('could not save to db');
+//     })
+// })
+
+
+
 router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
-             SimpleQandA.find({ 
+        SimpleQandA.find({ 
                  title: { 
                      $in: [
                  "new Site or maintainance",
@@ -377,7 +410,7 @@ if(process.env.NODE_ENV === 'production'){
 }
     
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     console.log(`The express server is running on port ${PORT}`);

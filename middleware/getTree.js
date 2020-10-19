@@ -1,5 +1,4 @@
 const TreeSearch = require('../models/answerTree');
-const SimpleQandA = require('../models/qanda');
 
 module.exports = getAnswersTree = async (req, res, next) => {
   
