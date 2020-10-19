@@ -13,8 +13,7 @@ import * as AOS from 'aos';
 })
 export class ServicesComponent implements OnInit {
 
-questions:Question[] = [];
-
+  
   constructor(private router: Router, private simpleService: SimpleEvalService) { }
 
   ngOnInit() {

@@ -21,15 +21,15 @@ export class SimpleEvalService {
   constructor(private http: HttpClient) { }
 
   getFirstQuestion():Observable<any>{
-    return this.http.get(`/firstquestion`);
+    return this.http.get(`verySimpleQuestions/firstquestion`);
   }
 
   getNextQuestion(evaluation:Evaluation):Observable<any>{
-    return this.http.post(`/nextQuestion`, evaluation);
+    return this.http.post(`verySimpleQuestions/nextQuestion`, evaluation);
   }
 
   getResult(evaluation:Evaluation[]):Observable<any>{
-    return this.http.post(`/result`, evaluation, httpOptions);
+    return this.http.post(`verySimpleQuestions/result`, evaluation, httpOptions);
   }
 
 }
