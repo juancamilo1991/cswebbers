@@ -4,13 +4,12 @@
 
     </app-evaluation-item>
     <div class="button-group">
-        <button class="backbtn" routerLink="#">back</button> &nbsp;&nbsp;
-        <button class="nextbtn" routerLink="#">next</button> &nbsp;&nbsp;
-        <button class="savebtn disable" [ngClass]="setDisabledButtonColorClass()" type="submit" [disabled]="!radioValues" (click)="saveAnswerToArray()">save Answer</button><br><br>
+
+        <button class="savebtn disable" [ngClass]="setDisabledButtonColorClass()" type="submit" [disabled]="!radioValues" (click)="saveAnswerToArray()">Anwort speichern</button><br><br>
        
     </div>
     <div class="submit-group">
-        <button class="sendbtn" type="submit" [ngClass]="showSendButton()" (click)="sendAnswersToServer()" (click)="submitGuard()">submit my Answers!</button>
+        <button class="sendbtn" type="submit" [ngClass]="showSendButton()" (click)="sendAnswersToServer()" (click)="submitGuard()">Preis evaluieren!</button>
     </div>
     </div>
 </div>

@@ -1,8 +1,8 @@
 .container {
-    width: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
 }
 .button-group {
     display: flex;
@@ -45,10 +45,6 @@
     visibility: visible;
 }
 
-.nextbtn, .backbtn {
-    background-color: var(--lightblue);
-}
-
 .savebtn {
     background-color: var(--ok-green);
 }
@@ -61,11 +57,6 @@
     color: var(--font-white);
 }
 
-.nextbtn:hover, .backbtn:hover {
-    background-color: rgb(41, 91, 156);
-    color: var(--font-white);
-}
-
 .disable {
     font-size: large;
     text-align: center;
@@ -73,7 +64,7 @@
     padding-bottom: 15px;
     flex-basis: 350px;
     color: var(--font-black);
-    background-color: var(--grey);
+    background-color: gray;
     border: none;
     border-radius: 30px;
 }

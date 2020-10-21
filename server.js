@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
-// const { mongoURI } = require('./config/keys');
+const { mongoURI } = require('./config/keys');
 const MongoStore = require('connect-mongo')(session);
 
 require('./passport-config')(passport);
@@ -21,9 +21,8 @@ require('./passport-config')(passport);
 const app = express();
 const router = express.Router();    
 
-//'mongodb://localhost:27017/csnow'
 //instance of mongodb Database
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
 
@@ -47,32 +46,6 @@ app.use(passport.session())
 
 
 // *-------------------- All Queries here --------------------*
-
-
-// router.route('/verySimpleQuestions/addAll').post((req, res) => {
-//     let questions = req.body;
-//     questions.forEach(element => {
-//         let entry = new SimpleQandA(element);
-//         entry.save()
-//         .then(result => {
-//             console.log('succesfully added to db');
-//         })
-//         .catch(err => {
-//             res.json('failed to add question');
-//         })
-//     });
-// })
-
-// router.route('/verySimpleQuestions/addTreeSearch').post((req, res) => {
-//     let nestedTree = new TreeSearch(req.body);
-//     nestedTree.save()
-//     .then(ans => {
-//         res.json('sucesfully added to db');
-//     })
-//     .catch(err => {
-//         console.error('could not save to db');
-//     })
-// })
 
 
 
@@ -115,141 +88,6 @@ router.route('/verySimpleQuestions/firstquestion').get((req, res) => {
    })    
 });
 
-router.route('verySimpleQuestions/howManyPagesQuestion').get((req, res) => {
-    SimpleQandA.find({ 
-        title: { 
-            $in: [
-        "how many pages",
-        "new Site simple site amount pages",
-        "new Site simple site amount pages more",
-        "new Site simple site amount pages most"
-       ]
-   }
-}, (err, ans) => {
-   if(err){
-       console.log('Nope!');
-   }
-   else{
-       res.send(ans);
-   }
-})    
-});
-
-router.route('verySimpleQuestions/newSiteAnnualCheckUpsQuestion').get((req, res) => {
-    SimpleQandA.find({ 
-        title: { 
-            $in: [
-        "maintainance",
-        "new Site simple site amount pages yes",
-        "new Site simple site amount pages no",
-       ]
-   }
-}, (err, ans) => {
-   if(err){
-       console.log('Nope!');
-   }
-   else{
-       res.send(ans);
-   }
-})    
-});
-
-router.route('verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
-    SimpleQandA.find({ 
-        title: { 
-            $in: [
-        "pre-built or unique",
-        "new Site simple site amount pages yes template",
-        "new Site simple site amount pages yes unique",
-       ]
-   }
-}, (err, ans) => {
-   if(err){
-       console.log('Nope!');
-   }
-   else{
-       res.send(ans);
-   }
-})    
-});
-
-router.route('verySimpleQuestions/newSiteDesignQuestion').get((req, res) => {
-    SimpleQandA.find({ 
-        title: { 
-            $in: [
-        "pre-built or unique",
-        "new Site simple site amount pages yes template",
-        "new Site simple site amount pages yes unique",
-       ]
-   }
-}, (err, ans) => {
-   if(err){
-       console.log('Nope!');
-   }
-   else{
-       res.send(ans);
-   }
-})    
-});
-
-router.route('verySimpleQuestions/updateSiteQuestion').get((req, res) => {
-    SimpleQandA.find({ 
-        title: { 
-            $in: [
-        "simple or e-commerce",
-        "simple Site",
-        "small app",
-        "complex e-commerce"
-       ]
-   }
-}, (err, ans) => {
-   if(err){
-       console.log('Nope!');
-   }
-   else{
-       res.send(ans);
-   }
-})    
-});
-
-router.route('verySimpleQuestions/updateSiteDesignQuestion').get((req, res) => {
-    SimpleQandA.find({ 
-        title: { 
-            $in: [
-        "design or functionality",
-        "simple Design",
-        "functionality",
-        "both"
-       ]
-   }
-}, (err, ans) => {
-   if(err){
-       console.log('Nope!');
-   }
-   else{
-       res.send(ans);
-   }
-})    
-});
-
-router.route('verySimpleQuestions/updateSiteCheckupQuestion').get((req, res) => {
-    SimpleQandA.find({ 
-        title: { 
-            $in: [
-        "maintainance update",
-        "changes app design yes",
-        "changes app design no"
-       ]
-   }
-}, (err, ans) => {
-   if(err){
-       console.log('Nope!');
-   }
-   else{
-       res.send(ans);
-   }
-})    
-});
 
 router.route('/verySimpleQuestions/nextQuestion').post((req, res) => {
     if(req.body.title == 'complete new Site'){
@@ -318,17 +156,22 @@ router.route('/verySimpleQuestions/nextQuestion').post((req, res) => {
     }
     else if(req.body.title == 'changes'){
         SimpleQandA.find({title: {$in: [
-            'simple or e-commerce changes',
-            'simple Site',
-            'small app',
-            'complex e-commerce'
-        ]}}, (err, ans) => {
-            if(err){
-                console.log('Noooope !');
-            }
-            else{
-                res.send(ans);
-            }
+            'simple or e-commerce changes'
+        ]}})
+        .then(async (ans) => {
+           let custom = await SimpleQandA.find({title: {$in: [
+                'simple Site',
+                'small app',
+                'complex e-commerce'
+            ]}});
+            custom.unshift(ans[0]);
+            return custom;
+        })
+        .then((combinedAnswer) => {
+            res.json(combinedAnswer);
+        })
+        .catch(err => {
+            console.error('nooope');
         });
     }
     else if((req.body.title == 'simple Site') ||
