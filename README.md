@@ -1,3 +1,3 @@
 # cswebbers express-backend
 
-This is the api for the affiliated angular-frontend project. Here the logic for the survey is handled and corresponding questions are fetched from the Database 
+This is a simple project where the goal is to help companies digitize their business.
